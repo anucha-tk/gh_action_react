@@ -7,6 +7,6 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4
       - name: Install dependencies
-        run: yarn
+        run: yarn install --immutable
       - name: Run tests
         run: yarn test

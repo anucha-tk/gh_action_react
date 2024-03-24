@@ -64,7 +64,7 @@ jobs:
         id: publish
         run: |
           script_file=$(find dist/assets/*.js -type f)
-          echo "::set-output name=script-file::$script_file"
+          echo "script-file=$script_file" >> $GITHUB_OUTPUT
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3

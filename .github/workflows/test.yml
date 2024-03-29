@@ -36,7 +36,7 @@ jobs:
           echo "Env workflow can see: ${{ env.MONGODB_NAME }}"
           echo "Env GITHUB_REPO_SECRET can see: ${{ secrets.REPO_SECRET}}"
           echo "Env GITHUB_TESTING_REPO_SECRET can't see: ${{ secrets.SIMPLE_SECRET }}"
-          echo "Env GITHUB_TESTING_REPO_VAR can't see: ${{ secrets.SIMPLE_VAR }}"
+          echo "Env GITHUB_TESTING_REPO_VAR can't see: ${{ var.SIMPLE_VAR }}"
   format:
     runs-on: ubuntu-latest
     steps:
@@ -97,7 +97,7 @@ jobs:
           echo "Env workflow can see: ${{ env.MONGODB_NAME }}"
           echo "Env GITHUB_REPO_SECRET can see: ${{ secrets.REPO_SECRET}}"
           echo "Env GITHUB_TESTING_REPO_SECRET can see: ${{ secrets.SIMPLE_SECRET }}"
-          echo "Env GITHUB_TESTING_REPO_VAR can see: ${{ secrets.SIMPLE_VAR }}"
+          echo "Env GITHUB_TESTING_REPO_VAR can see: ${{ vars.SIMPLE_VAR }}"
   build:
     needs: test
     runs-on: ubuntu-latest

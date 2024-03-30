@@ -1,0 +1,24 @@
+{
+  "numTotalTestSuites": 1,
+  "numPassedTestSuites": 0,
+  "numFailedTestSuites": 1,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 0,
+  "numPassedTests": 0,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "startTime": 1711772305363,
+  "success": false,
+  "testResults": [
+    {
+      "assertionResults": [],
+      "startTime": 1711772305363,
+      "endTime": 1711772305363,
+      "status": "failed",
+      "message": "Failed to load url /Users/anuchataowkaen/App/git/gh-react-vite/src/test/setup.js (resolved id: /Users/anuchataowkaen/App/git/gh-react-vite/src/test/setup.js). Does the file exist?",
+      "name": "/Users/anuchataowkaen/App/git/gh-react-vite/src/App.test.ts"
+    }
+  ]
+}
+

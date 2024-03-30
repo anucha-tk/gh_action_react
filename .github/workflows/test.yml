@@ -31,12 +31,12 @@ jobs:
         run: yarn lint
 
       # testing env you can remove
-      - name: echo env
-        run: |
-          echo "Env workflow can see: ${{ env.MONGODB_NAME }}"
-          echo "Env GITHUB_REPO_SECRET can see: ${{ secrets.REPO_SECRET}}"
-          echo "Env GITHUB_TESTING_REPO_SECRET can't see: ${{ secrets.SIMPLE_SECRET }}"
-          echo "Env GITHUB_TESTING_REPO_VAR can't see: ${{ vars.SIMPLE_VAR }}"
+      # - name: echo env
+      #   run: |
+      #     echo "Env workflow can see: ${{ env.MONGODB_NAME }}"
+      #     echo "Env GITHUB_REPO_SECRET can see: ${{ secrets.REPO_SECRET}}"
+      #     echo "Env GITHUB_TESTING_REPO_SECRET can't see: ${{ secrets.SIMPLE_SECRET }}"
+      #     echo "Env GITHUB_TESTING_REPO_VAR can't see: ${{ vars.SIMPLE_VAR }}"
   format:
     runs-on: ubuntu-latest
     steps:
@@ -89,15 +89,23 @@ jobs:
         run: yarn install
 
       - name: Check Unit Test
+        id: run-tests
         run: yarn test
 
       # testing env you can remove
-      - name: echo env
-        run: |
-          echo "Env workflow can see: ${{ env.MONGODB_NAME }}"
-          echo "Env GITHUB_REPO_SECRET can see: ${{ secrets.REPO_SECRET}}"
-          echo "Env GITHUB_TESTING_REPO_SECRET can see: ${{ secrets.SIMPLE_SECRET }}"
-          echo "Env GITHUB_TESTING_REPO_VAR can see: ${{ vars.SIMPLE_VAR }}"
+      # - name: echo env
+      #   run: |
+      #     echo "Env workflow can see: ${{ env.MONGODB_NAME }}"
+      #     echo "Env GITHUB_REPO_SECRET can see: ${{ secrets.REPO_SECRET}}"
+      #     echo "Env GITHUB_TESTING_REPO_SECRET can see: ${{ secrets.SIMPLE_SECRET }}"
+      #     echo "Env GITHUB_TESTING_REPO_VAR can see: ${{ vars.SIMPLE_VAR }}"
+
+      - name: Upload report
+        uses: actions/upload-artifact@v3
+        if: failure() && steps.run-tests.outcome == 'failure'
+        with:
+          name: test-report
+          path: test.json
   build:
     needs: test
     runs-on: ubuntu-latest

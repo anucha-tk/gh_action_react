@@ -8,7 +8,7 @@
   "numFailedTests": 0,
   "numPendingTests": 0,
   "numTodoTests": 0,
-  "startTime": 1711782936889,
+  "startTime": 1712203124083,
   "success": true,
   "testResults": [
     {
@@ -22,8 +22,8 @@
           "failureMessages": []
         }
       ],
-      "startTime": 1711782938117,
-      "endTime": 1711782938118,
+      "startTime": 1712203125731,
+      "endTime": 1712203125732,
       "status": "passed",
       "message": "",
       "name": "/Users/anuchataowkaen/App/git/gh-react-vite/src/App.test.ts"

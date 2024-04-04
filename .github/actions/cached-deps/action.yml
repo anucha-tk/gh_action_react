@@ -1,0 +1,20 @@
+name: 'Get & Cache Dependencies'
+description: 'for yarn berry'
+runs:
+  using: composite
+  steps:
+    - name: Enable Corepack
+      run: npm install -g corepack && corepack enable
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+    - uses: actions/cache@v4
+      id: yarn-cache
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+    - name: Install dependencies
+      run: yarn install
+      shell: bash
